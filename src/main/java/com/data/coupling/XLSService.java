@@ -14,6 +14,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 
 public class XLSService {
@@ -172,21 +173,21 @@ public class XLSService {
 
 				if (temp != null) {
 					accessedFileName = temp.split("\n");
-//					System.out.println("*****");
-//
-//for (int i = 0; i < accessedFileName.length; i++) {
-//	
-//	System.out.println(accessedFileName[i]);
-//	
-//}
-//System.out.println("@@@@@@@@@@@@@@@@@@@@@2");
-//
-//accessedFileName=getArray(accessedFileName);
-//for (int i = 0; i < accessedFileName.length; i++) {
-//	
-//	System.out.println(accessedFileName[i]);
-//	
-//}			
+					// System.out.println("*****");
+					//
+					// for (int i = 0; i < accessedFileName.length; i++) {
+					//
+					// System.out.println(accessedFileName[i]);
+					//
+					// }
+					// System.out.println("@@@@@@@@@@@@@@@@@@@@@2");
+					//
+					// accessedFileName=getArray(accessedFileName);
+					// for (int i = 0; i < accessedFileName.length; i++) {
+					//
+					// System.out.println(accessedFileName[i]);
+					//
+					// }
 					dataSheet.setAccessedFileName(getArray(accessedFileName));
 				}
 
@@ -300,6 +301,10 @@ public class XLSService {
 						cellValue = cellValue + "\n" + temp[i];
 					}
 					if (!cellValue.isEmpty()) {
+
+						CellStyle cs = myExcelBook.createCellStyle();
+						cs.setWrapText(true);
+						row.getCell(2).setCellStyle(cs);
 						row.getCell(2).setCellValue(cellValue);
 					}
 					cellValue = row.getCell(3).getStringCellValue();
@@ -314,6 +319,9 @@ public class XLSService {
 						cellValue = cellValue + "\n" + temp[i];
 					}
 					if (!cellValue.isEmpty()) {
+						CellStyle cs = myExcelBook.createCellStyle();
+						cs.setWrapText(true);
+						row.getCell(3).setCellStyle(cs);
 						row.getCell(3).setCellValue(cellValue);
 					}
 
@@ -329,6 +337,9 @@ public class XLSService {
 						cellValue = cellValue + "\n" + temp[i];
 					}
 					if (!cellValue.isEmpty()) {
+						CellStyle cs = myExcelBook.createCellStyle();
+						cs.setWrapText(true);
+						row.getCell(5).setCellStyle(cs);
 						row.getCell(5).setCellValue(cellValue);
 					}
 
@@ -344,6 +355,9 @@ public class XLSService {
 						cellValue = cellValue + "\n" + temp[i];
 					}
 					if (!cellValue.isEmpty()) {
+						CellStyle cs = myExcelBook.createCellStyle();
+						cs.setWrapText(true);
+						row.getCell(6).setCellStyle(cs);
 						row.getCell(6).setCellValue(cellValue);
 					}
 
@@ -359,6 +373,9 @@ public class XLSService {
 						cellValue = cellValue + "\n" + temp[i];
 					}
 					if (!cellValue.isEmpty()) {
+						CellStyle cs = myExcelBook.createCellStyle();
+						cs.setWrapText(true);
+						row.getCell(7).setCellStyle(cs);
 						row.getCell(7).setCellValue(cellValue);
 					}
 				}
@@ -387,14 +404,14 @@ public class XLSService {
 				row = it.next();
 				Cell cell = row.createCell(8);
 				cell.setCellStyle(row.getCell(0).getCellStyle());
-				
+
 				cell.setCellValue("Access Comment");
 				Cell cell1 = row.createCell(9);
 				cell1.setCellValue("Modified Comment");
 				myExcelSheet.autoSizeColumn(8);
 				myExcelSheet.autoSizeColumn(9);
 				cell1.setCellStyle(row.getCell(0).getCellStyle());
-				
+
 				flag = false;
 				continue;
 			} else {
@@ -419,6 +436,9 @@ public class XLSService {
 								cellValue = cellValue + "\n" + temp[i];
 						}
 						if (!cellValue.isEmpty()) {
+							CellStyle cs = myExcelBook.createCellStyle();
+							cs.setWrapText(true);
+							cell.setCellStyle(cs);
 							cell.setCellValue(cellValue);
 						}
 
@@ -430,6 +450,9 @@ public class XLSService {
 								cellValue = cellValue + "\n" + temp[i];
 						}
 						if (!cellValue.isEmpty()) {
+							CellStyle cs = myExcelBook.createCellStyle();
+							cs.setWrapText(true);
+							cell1.setCellStyle(cs);
 							cell1.setCellValue(cellValue);
 						}
 
@@ -455,8 +478,6 @@ public class XLSService {
 					list.add(s.trim());
 				}
 			}
-
-
 
 			return list.toArray(new String[list.size()]);
 
